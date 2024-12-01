@@ -48,6 +48,19 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">Всі пости</a>
                         </li>
+                        @guest
+                        <li class="nav-item">
+                            <a class="btn btn-outline-light" href="{{ route('register') }}">Реєстрація</a>
+                        </li>
+                        <li class="nav-item ms-2">
+                            <a class="btn btn-light" href="#">Вхід</a>
+                        </li>
+                        @endguest
+                        @auth
+                        <li class="nav-item ms-2">
+                            <a class="btn btn-light" href="#">Вихід</a>
+                        </li>
+                        @endauth
                     </ul>
                 </div>
             </div>

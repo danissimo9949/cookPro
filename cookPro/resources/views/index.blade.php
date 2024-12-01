@@ -9,10 +9,8 @@
         </div>
     </header>
 
-    <!-- Раздел с карточками постов -->
     <div class="container my-5">
         <div class="row">
-            <!-- Карточка 1 -->
             <div class="col-md-4">
                 <div class="card">
                     <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Рецепт 1">
@@ -23,8 +21,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Карточка 2 -->
             <div class="col-md-4">
                 <div class="card">
                     <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Рецепт 2">
@@ -35,8 +31,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Карточка 3 -->
             <div class="col-md-4">
                 <div class="card">
                     <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Рецепт 3">
