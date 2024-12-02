@@ -12,8 +12,8 @@ class AuthorSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            'name' => 'DanieleBomboni',
-            'email' => 'danissimo228337@gmail.com',
+            'name' => 'DanieleAdmin',
+            'email' => 'danissimo228666@gmail.com',
             'password' => bcrypt('danissimo2286'),
             'role' => 'author',
         ]);

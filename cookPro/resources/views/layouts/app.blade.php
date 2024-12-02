@@ -42,9 +42,11 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
+                        @if(auth()->user() && auth()->user()->role == 'author')
                         <li class="nav-item">
                             <a class="nav-link" href="#">Створити пост</a>
                         </li>
+                        @endif
                         <li class="nav-item">
                             <a class="nav-link" href="#">Всі пости</a>
                         </li>
@@ -53,12 +55,15 @@
                             <a class="btn btn-outline-light" href="{{ route('register') }}">Реєстрація</a>
                         </li>
                         <li class="nav-item ms-2">
-                            <a class="btn btn-light" href="#">Вхід</a>
+                            <a class="btn btn-light" href="{{ route('login') }}">Вхід</a>
                         </li>
                         @endguest
                         @auth
                         <li class="nav-item ms-2">
-                            <a class="btn btn-light" href="#">Вихід</a>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="btn btn-light">Вихід</button>
+                            </form>
                         </li>
                         @endauth
                     </ul>
