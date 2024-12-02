@@ -9,7 +9,8 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 
 Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('register', [RegisterController::class, 'register']);
-
+Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('login', [AuthController::class, 'login']);
 
 Route::post('logout', function () {
     Auth::logout();
