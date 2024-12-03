@@ -44,11 +44,11 @@
                     <ul class="navbar-nav ms-auto">
                         @if(auth()->user() && auth()->user()->role == 'author')
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Створити пост</a>
+                            <a class="nav-link" href="{{ route('blog.create') }}">Створити пост</a>
                         </li>
                         @endif
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Всі пости</a>
+                            <a class="nav-link" href="{{ route('blog.index') }}">Всі пости</a>
                         </li>
                         @guest
                         <li class="nav-item">

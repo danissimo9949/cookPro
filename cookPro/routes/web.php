@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -18,3 +19,7 @@ Route::post('logout', function () {
     session()->flush();
     return redirect('/');
 })->name('logout');
+
+Route::get('/blog', [PostController::class, 'index'])->name('blog.index');
+Route::get('/blog/create', [PostController::class, 'create'])->name('blog.create');
+Route::post('/blog/create', [PostController::class, 'store'])->name('blog.store');

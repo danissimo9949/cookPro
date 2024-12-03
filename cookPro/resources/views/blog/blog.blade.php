@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-4">
                 <select name="category" class="form-select" onchange="this.form.submit()">
-                    <option value="">Все категории</option>
+                    <option value="">Всі категорії</option>
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}" 
                             {{ $selectedCategory == $category->id ? 'selected' : '' }}>
@@ -25,10 +25,13 @@
             <div class="card-body">
                 <h2 class="card-title">{{ $post->title }}</h2>
                 <p class="card-text">{{ Str::limit($post->content, 150) }}</p>
-                <a href="{{ route('blog.show', $post) }}" class="btn btn-primary">Читать дальше</a>
+                <a href="#" class="btn btn-primary">Читати</a>
             </div>
             <div class="card-footer text-muted">
-                Категория: {{ $post->category->name ?? 'Без категории' }} | Опубликовано {{ $post->created_at->diffForHumans() }}
+                Теги:   
+                @foreach ($post->tags as $tag)
+                <span class="tag">{{ $tag->name }}</span>
+                @endforeach
             </div>
         </div>
     @empty
