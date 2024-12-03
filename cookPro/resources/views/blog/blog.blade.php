@@ -25,7 +25,7 @@
             <div class="card-body">
                 <h2 class="card-title">{{ $post->title }}</h2>
                 <p class="card-text">{{ Str::limit($post->content, 150) }}</p>
-                <a href="#" class="btn btn-primary">Читати</a>
+                <a href="{{ route('blog.show', $post->id)}}" class="btn btn-primary">Читати</a>
             </div>
             <div class="card-footer text-muted">
                 Теги:   

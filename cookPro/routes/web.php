@@ -23,3 +23,4 @@ Route::post('logout', function () {
 Route::get('/blog', [PostController::class, 'index'])->name('blog.index');
 Route::get('/blog/create', [PostController::class, 'create'])->name('blog.create');
 Route::post('/blog/create', [PostController::class, 'store'])->name('blog.store');
+Route::get('/blog/post/{id}', [PostController::class, 'show'])->name('blog.show');

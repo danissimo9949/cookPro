@@ -67,4 +67,9 @@ class PostController extends Controller
     
         return redirect()->route('blog.index');
     }
+
+    public function show($id){
+        $post = Post::with('category', 'tags', 'comments')->findOrFail($id);
+        return view('blog.show', compact('post'));
+    }
 }
