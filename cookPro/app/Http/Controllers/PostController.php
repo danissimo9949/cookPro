@@ -72,4 +72,51 @@ class PostController extends Controller
         $post = Post::with('category', 'tags', 'comments')->findOrFail($id);
         return view('blog.show', compact('post'));
     }
+
+    public function edit($id){
+        $post = Post::findOrFail($id);
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('blog.edit', compact('post', 'categories', 'tags'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'content' => 'required|string',
+            'category_id' => 'required|exists:categories,id',
+            'image' => 'nullable|image',
+            'tags' => 'nullable|array',
+            'new_tags' => 'nullable|string'
+        ]);
+
+        $post = Post::findOrFail($id);
+        $post->update($request->only('title', 'content', 'category_id'));
+
+        if ($request->hasFile('image')) {
+            $post->image = $request->file('image')->store('images');
+        }
+
+        
+        $post->tags()->sync($request->tags);
+
+        if ($request->new_tags) {
+            $newTags = explode(',', $request->new_tags);
+            foreach ($newTags as $tag) {
+                $tag = trim($tag);
+                $tag = Tag::firstOrCreate(['name' => $tag]);
+                $post->tags()->attach($tag);
+            }
+        }
+
+    return redirect()->route('blog.index');
+    }
+
+    public function destroy($id)
+    {
+        $post = Post::findOrFail($id);
+        $post->delete();
+        return redirect()->route('blog.index');
+    }
 }

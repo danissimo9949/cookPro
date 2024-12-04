@@ -3,8 +3,15 @@
 @section('content')
     <div class="container">
         <div class="card mb-4">
-            <div class="card-header">
-                <h1>{{ $post->title }}</h1>
+            <div class="card-header d-flex align-items-center justify-content-between">
+                <h1 class="mb-0">{{ $post->title }}</h1>
+                <div>
+                    <a href="{{ route('blog.edit', $post->id) }}" class="btn btn-warning btn-sm me-2">Редагувати</a>
+                    <form action="{{ route('blog.destroy', $post->id) }}" method="POST" class="d-inline">
+                        @csrf
+                        <button type="submit" class="btn btn-danger btn-sm">Видалити</button>
+                    </form>
+                </div>
             </div>
             <div class="card-body">
                 <p><strong>Категорія:</strong> {{ $post->category->name }}</p>
