@@ -32,6 +32,30 @@
         </div>
 
         <hr>
-
+        <div class="comments mt-4">
+            <h3>Коментарі:</h3>
+            @foreach($post->comments as $comment)
+                <div class="comment">
+                    <p><strong>{{ $comment->user->name ?? 'Гість' }}:</strong> {{ $comment->content }}</p>
+                    @auth
+                    <form method="POST" action="{{ route('comments.reply', ['post' => $post->id, 'comment' => $comment->id]) }}">
+                        @csrf
+                        <textarea name="content" required></textarea>
+                        <button type="submit" class="btn btn-primary">Відповісти</button>
+                    </form>
+                    @endauth
+                </div>
+            @endforeach
+            @auth
+            <hr>
+            
+            <h3>Додати коментар:</h3>
+            <form method="POST" action="{{ route('comments.store', $post->id) }}">
+                @csrf
+                <textarea name="content" required></textarea>
+                <button type="submit" class="btn btn-primary">Додати коментар</button>
+            </form>
+            @endauth
+        </div>
     </div>
 @endsection

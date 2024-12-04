@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -27,3 +28,6 @@ Route::get('/blog/post/{id}', [PostController::class, 'show'])->name('blog.show'
 Route::post('/blog/{id}', [PostController::class, 'destroy'])->name('blog.destroy');
 Route::get('/blog/{id}/edit', [PostController::class, 'edit'])->name('blog.edit');
 Route::put('/blog/{id}', [PostController::class, 'update'])->name('blog.update');
+
+Route::post('posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
+Route::post('posts/{post}/comments/{comment}/reply', [CommentController::class, 'reply'])->name('comments.reply');
