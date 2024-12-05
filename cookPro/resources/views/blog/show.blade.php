@@ -15,19 +15,18 @@
             </div>
             <div class="card-body">
                 <p><strong>Категорія:</strong> {{ $post->category->name }}</p>
-                <p><strong>Дата створення:</strong> {{ $post->created_at->format('d-m-Y') }}</p>
-                <p>{{ $post->content }}</p>
-
-                @if($post->image)
-                    <img src="{{ asset('storage/' . $post->image) }}" alt="Image" class="img-fluid mb-3">
-                @endif
-
                 <h5>Теги:</h5>
                 <div>
                     @foreach($post->tags as $tag)
                         <span class="badge bg-secondary">{{ $tag->name }}</span>
                     @endforeach
                 </div>
+                <p><strong>Дата створення:</strong> {{ $post->created_at->format('d-m-Y') }}</p>
+                @if($post->image)
+                    <img src="{{ asset('storage/' . $post->image) }}" alt="Image" class="img-fluid mb-3" style="max-width: 500px;">
+                @endif
+                <p>{{ $post->content }}</p>
+
             </div>
         </div>
 

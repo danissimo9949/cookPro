@@ -20,25 +20,32 @@
         </div>
     </form>
 
-    @forelse ($posts as $post)
-        <div class="card mb-4">
-            <div class="card-body">
-                <h2 class="card-title">{{ $post->title }}</h2>
-                <p class="card-text">{{ Str::limit($post->content, 150) }}</p>
-                <a href="{{ route('blog.show', $post->id)}}" class="btn btn-primary">Читати</a>
+    <div class="row">
+        @forelse ($posts as $post)
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">{{ $post->title }}</h2>
+                        @if($post->image)
+                            <img src="{{ asset('storage/' . $post->image) }}" alt="Image" class="img-fluid mb-3">
+                        @endif
+                        <p class="card-text">{{ Str::limit($post->content, 100) }}</p>
+                        <a href="{{ route('blog.show', $post->id)}}" class="btn btn-primary">Читати</a>
+                    </div>
+                    <div class="card-footer text-muted">
+                        Теги:   
+                        @foreach ($post->tags as $tag)
+                        <span class="tag">{{ $tag->name }}</span>
+                        @endforeach
+                    </div>
+                </div>
             </div>
-            <div class="card-footer text-muted">
-                Теги:   
-                @foreach ($post->tags as $tag)
-                <span class="tag">{{ $tag->name }}</span>
-                @endforeach
-            </div>
-        </div>
-    @empty
-        <p>Постов пока нет.</p>
-    @endforelse
-
+        @empty
+            <p>Постів немає</p>
+        @endforelse
+    </div>
 
     {{ $posts->links() }}
 </div>
 @endsection
+

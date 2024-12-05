@@ -45,7 +45,7 @@ class PostController extends Controller
         $post = new Post($request->only('title', 'content', 'category_id'));
         
         if ($request->hasFile('image')) {
-            $post->image = $request->file('image')->store('images');
+            $post->image = $request->file('image')->store('images', 'public');
         }
     
         $post->save();

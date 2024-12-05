@@ -4,7 +4,7 @@
     <div class="container">
         <h1>Створити новий пост</h1>
 
-        <form method="POST" action="{{ route('blog.store') }}" enctype="multipart/form-data">
+        <form id="create-post-form" method="POST" action="{{ route('blog.store') }}" enctype="multipart/form-data">
             @csrf
 
             <div class="form-group">

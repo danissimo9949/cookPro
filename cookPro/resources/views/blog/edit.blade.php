@@ -4,7 +4,7 @@
 <div class="container">
     <h1>Редактировать пост</h1>
 
-    <form action="{{ route('blog.update', $post->id) }}" method="POST" enctype="multipart/form-data">
+    <form id='edit-post-form' action="{{ route('blog.update', $post->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
