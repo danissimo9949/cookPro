@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<form method="POST" action="{{ route('register') }}">
+<form id='register-form' method="POST" action="{{ route('register') }}">
     @csrf
 
     <div class="mb-3">
